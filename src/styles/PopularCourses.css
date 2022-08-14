@@ -1,0 +1,14 @@
+.popular-courses-btn {
+    width: 100%;
+    height: 93px;
+    background: #FFFFFF;
+    border: 1px solid #DFDFDF;
+    border-radius: 16px;
+    margin: 0 auto;
+    display: block;
+}
+
+.popular-courses-btn:hover {
+    background: #FFA00A;
+    box-shadow: 38px 28px 104px 23px rgba(120, 111, 98, 0.26);
+}

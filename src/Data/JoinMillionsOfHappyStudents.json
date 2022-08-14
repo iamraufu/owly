@@ -1,0 +1,19 @@
+[{
+        "name": "Alan Smith",
+        "designation": "Student",
+        "image": "https://i.ibb.co/BK2VBPq/review1.png",
+        "description": "I have an excellent experience with Owlys especially with my coordinators Cecilia Piedra and Michael Galarza. They were there for me from the being till the end during the whole process even when I was applying for my visa!"
+    },
+    {
+        "name": "Alisha Neil",
+        "designation": "Student",
+        "image": "https://i.ibb.co/89KZxC7/review2.png",
+        "description": "I have an excellent experience with Owlys especially with my coordinators Cecilia Piedra and Michael Galarza. They were there for me from the being till the end during the whole process even when I was applying for my visa!"
+    },
+    {
+        "name": "Rachel String",
+        "designation": "Student",
+        "image": "https://i.ibb.co/QnnHyPn/review3.png",
+        "description": "I have an excellent experience with Owlys especially with my coordinators Cecilia Piedra and Michael Galarza."
+    }
+]
