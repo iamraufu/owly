@@ -1,0 +1,32 @@
+.programs-card {
+    min-height: 229.1px;
+    background: #F9F8F8;
+    border: 1px solid #EAEAEA;
+    border-radius: 16px;
+}
+
+.programs-card:hover {
+    background: white;
+    border: 1px solid #FFA00A;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.programs-apply-btn,
+.programs-details-btn {
+    padding: 12px 24px;
+    width: 92px;
+    height: 50px;
+    border: 1px solid #000000;
+    border-radius: 12px;
+}
+
+.programs-apply-btn:hover,
+.programs-details-btn:hover {
+    background: #FFA00A;
+    border: 1px solid #FFA00A;
+    color: #000000;
+}
+
+.programs-details-btn {
+    width: 168px;
+}

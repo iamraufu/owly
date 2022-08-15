@@ -2,12 +2,13 @@ import React from 'react';
 import linkedinImage from '../images/Homepage/linkedin.svg';
 import facebookImage from '../images/Homepage/facebook.svg';
 import twitterImage from '../images/Homepage/twitter.svg';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
         <footer style={{ backgroundColor: '#414141', color: 'white' }}>
             <section className='container py-5'>
-                <div className="row mt-5">
+                <div className="row">
                     <div className="col-md-4">
                         <img width={120} src="https://i.ibb.co/8gBfD3t/logowhite.png" alt="owly logo" className="img-fluid" />
                         <p className='mt-3'>Owly connects
@@ -19,19 +20,19 @@ const Footer = () => {
                     <div className="col-md-2">
                         <h2 style={{ color: '#FEA00B' }} className='fs-5 fw-bold'>About</h2>
                         <ul className='list-unstyled'>
-                            <li className='mt-1'><a href='/' className='text-decoration-none text-white'>Our Story</a></li>
-                            <li className='mt-1'><a href='/' className='text-decoration-none text-white'>Careers</a></li>
-                            <li className='mt-1'><a href='/' className='text-decoration-none text-white'>Blog</a></li>
-                            <li className='mt-1'><a href='/' className='text-decoration-none text-white'>Press</a></li>
+                            <li className='mt-1'><Link to='/' className='text-decoration-none text-white'>Our Story</Link></li>
+                            <li className='mt-1'><Link to='/' className='text-decoration-none text-white'>Careers</Link></li>
+                            <li className='mt-1'><Link to='/' className='text-decoration-none text-white'>Blog</Link></li>
+                            <li className='mt-1'><Link to='/' className='text-decoration-none text-white'>Press</Link></li>
                         </ul>
                     </div>
 
                     <div className="col-md-2">
                         <h2 style={{ color: '#FEA00B' }} className='fs-5 fw-bold'>Services</h2>
                         <ul className='list-unstyled'>
-                            <li className='f'><a href='/' className='text-decoration-none text-white'>Students</a></li>
-                            <li className='f'><a href='/' className='text-decoration-none text-white'>Schools</a></li>
-                            <li className='f'><a href='/' className='text-decoration-none text-white'>Recruiters</a></li>
+                            <li className='f'><Link to='/' className='text-decoration-none text-white'>Students</Link></li>
+                            <li className='f'><Link to='/' className='text-decoration-none text-white'>Schools</Link></li>
+                            <li className='f'><Link to='/' className='text-decoration-none text-white'>Recruiters</Link></li>
                         </ul>
                     </div>
 

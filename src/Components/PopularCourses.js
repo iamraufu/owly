@@ -8,7 +8,7 @@ const PopularCourses = () => {
             <div className="container mt-5">
                 <h1 className='fw-bold'>Popular Courses</h1>
 
-                <div className="d-flex justify-content-between mt-5">
+                <div className="row justify-content-between mt-5">
                     <div className="col-sm-8">
                     <p>The ApplyBoard Platform allows you to enrich and 
                         <br />
