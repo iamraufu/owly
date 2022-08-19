@@ -20,7 +20,8 @@
     margin-left: 20px;
 }
 
-select {
+select,
+input {
     padding: 10px;
     font-weight: 700;
     font-family: 'Ibarra Real Nova', serif;
@@ -28,7 +29,8 @@ select {
     border-bottom: 2px solid #FFAC29;
 }
 
-select:focus {
+select:focus,
+input:focus {
     outline: none;
 }
 
@@ -48,4 +50,20 @@ select:focus {
 
 .button-signUp:hover {
     background: #FFAC29;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
 }

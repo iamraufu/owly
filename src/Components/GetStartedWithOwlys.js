@@ -14,7 +14,6 @@ const GetStartedWithOwlys = () => {
                             <option value="">Institution</option>
                             <option value="">Partner</option>
                             <option value="">Recruiter</option>
-
                         </select>
                     </h3>
                 </div>
