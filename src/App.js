@@ -9,6 +9,7 @@ import StudentSignUp from './Pages/SignUp/StudentSignUp';
 import PartnerSignUp from './Pages/SignUp/PartnerSignUp';
 import CollegeSignUp from './Pages/SignUp/CollegeSignUp';
 import StudentPanel from './Pages/StudentPanel/StudentPanel';
+import InstitutePanel from './Pages/InstitutePanel/InstitutePanel';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path="/program-details/:id" element={<ProgramDetails />} />
 
       <Route path="/dashboard/student" element={<StudentPanel />} />
+      <Route path="/dashboard/institute" element={<InstitutePanel />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>

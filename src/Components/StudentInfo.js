@@ -94,12 +94,6 @@ const StudentInfo = () => {
 
             </div>
 
-            {/* <div className="my-3">
-                    <label htmlFor="email" className="">Email</label>
-                    <input type="email" id='email' className="form-control" aria-describedby="emailHelp" {...register("email", { required: true })} />
-                    {errors.email && <span className='text-danger'>This field is required</span>}
-                </div> */}
-
         </form>
     );
 };
