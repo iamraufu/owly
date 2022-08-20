@@ -12,15 +12,15 @@ const PartnerSidebar = () => {
 
             <div className="mt-5">
                 <div style={{backgroundColor:'#FFAC29'}} className="p-3 fw-bold">
-                    <NavLink to='/dashboard/institute' className='text-decoration-none text-black ps-5'><img src={uniImage} alt="" /> Partner</NavLink>
+                    <NavLink to='/dashboard/partner' className='text-decoration-none text-black ps-5'><img src={uniImage} alt="" /> Partner</NavLink>
                 </div>
 
                 <div className="p-3">
-                    <NavLink to='/dashboard/institute' className='text-decoration-none text-black ps-5'><img src={leadsImage} alt="" /> Leads</NavLink>
+                    <NavLink to='/dashboard/partner' className='text-decoration-none text-black ps-5'><img src={leadsImage} alt="" /> Leads</NavLink>
                 </div>
 
                 <div className="p-3">
-                    <NavLink to='/dashboard/institute' className='text-decoration-none text-black ps-5'><img src={messagesImage} alt="" /> Messages</NavLink>
+                    <NavLink to='/dashboard/partner' className='text-decoration-none text-black ps-5'><img src={messagesImage} alt="" /> Messages</NavLink>
                 </div>
 
             </div>

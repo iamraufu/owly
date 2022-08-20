@@ -1,4 +1,6 @@
 import React from 'react';
+import PartnerDetails from './PartnerDetails';
+import PartnerServices from './PartnerServices';
 
 const PartnerMain = () => {
     return (
@@ -23,9 +25,8 @@ const PartnerMain = () => {
             <div style={{ height: '5vh' }} className=""></div>
 
             <div style={{ height: '87vh', borderBottom: '1px solid #e5e5e5', overflowY: 'auto',  }} className="mx-5 bg-white p-5">
-                {/* <InstituteDetails />
-                <CourseDetails />
-                <FundingDetails /> */}
+                <PartnerDetails />
+                <PartnerServices />
             </div>
 
         </section>
