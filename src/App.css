@@ -21,7 +21,8 @@
 }
 
 select,
-input {
+input,
+textarea {
     padding: 10px;
     font-weight: 700;
     font-family: 'Ibarra Real Nova', serif;
@@ -30,7 +31,8 @@ input {
 }
 
 select:focus,
-input:focus {
+input:focus,
+textarea:focus {
     outline: none;
 }
 
