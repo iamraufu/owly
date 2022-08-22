@@ -1,9 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
 
 const StudentInfo = () => {
+
+    const id = localStorage.getItem('token')
+    const [user, setUser] = useState({})
+
+    useEffect(()=>{
+        fetch(`http://localhost:8000/students/${id}`)
+        .then(response => response.json())
+        .then(data => setUser(data))
+    },[id])
+
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => updateInfo(data);
+
+    const updateInfo = details => {
+        console.log(details)
+        fetch(`http://localhost:8000/student/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(details)
+        })
+            .then(res => res.json())
+            .then(data =>
+                data.status === true ?
+                    Swal.fire({
+                        icon: 'success',
+                        title: "Updated!!",
+                        text: `${data.message}`,
+                    })
+                    :
+                    Swal.fire({
+                        icon: 'error',
+                        title: "Something Went Wrong!",
+                        text: `${data.message}`,
+                    })
+            )
+    }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -24,7 +59,7 @@ const StudentInfo = () => {
                 <div className="col-md-4 mb-3">
                     <label>First Name</label>
                     <br />
-                    <input type="text" style={{ padding: '0' }} {...register("firstName", { required: true })} />
+                    <input type="text" defaultValue={user?.firstName} style={{ padding: '0' }} {...register("firstName", { required: true })} />
                     <br />
                     {errors.firstName && <span className='text-danger fw-bold'>Enter Name</span>}
                 </div>
@@ -32,7 +67,7 @@ const StudentInfo = () => {
                 <div className="col-md-4 mb-3">
                     <label>Middle Name</label>
                     <br />
-                    <input type="text" style={{ padding: '0' }} {...register("middleName", { required: true })} />
+                    <input type="text" defaultValue={user?.middleName} style={{ padding: '0' }} {...register("middleName")} />
                     <br />
                     {errors.middleName && <span className='text-danger fw-bold'>Enter Name</span>}
                     <br />
@@ -41,7 +76,7 @@ const StudentInfo = () => {
                 <div className="col-md-4 mb-3">
                     <label>Last Name</label>
                     <br />
-                    <input type="text" style={{ padding: '0' }} {...register("lastName", { required: true })} />
+                    <input type="text" defaultValue={user?.lastName} style={{ padding: '0' }} {...register("lastName", { required: true })} />
                     <br />
                     {errors.lastName && <span className='text-danger fw-bold'>Enter Name</span>}
                     <br />
@@ -50,7 +85,7 @@ const StudentInfo = () => {
                 <div className="col-md-4 mb-3">
                     <label>Date of Birth</label>
                     <br />
-                    <input type="text" style={{ padding: '0' }} {...register("birth", { required: true })} />
+                    <input type="text" defaultValue={user?.birth} style={{ padding: '0' }} {...register("birth", { required: true })} />
                     <br />
                     {errors.birth && <span className='text-danger fw-bold'>Enter Date of Birth</span>}
                     <br />
@@ -59,7 +94,7 @@ const StudentInfo = () => {
                 <div className="col-md-4 mb-3">
                     <label>First Language</label>
                     <br />
-                    <input type="text" style={{ padding: '0' }} {...register("firstLanguage", { required: true })} />
+                    <input type="text" defaultValue={user?.firstLanguage} style={{ padding: '0' }} {...register("firstLanguage", { required: true })} />
                     <br />
                     {errors.firstLanguage && <span className='text-danger fw-bold'>Enter Language</span>}
                     <br />
@@ -68,7 +103,7 @@ const StudentInfo = () => {
                 <div className="col-md-4 mb-3">
                     <label>Country of Citizenship</label>
                     <br />
-                    <input type="text" style={{ padding: '0' }} {...register("citizen", { required: true })} />
+                    <input type="text" defaultValue={user?.citizen} style={{ padding: '0' }} {...register("citizen", { required: true })} />
                     <br />
                     {errors.citizen && <span className='text-danger fw-bold'>Enter Citizenship</span>}
                     <br />
@@ -77,7 +112,7 @@ const StudentInfo = () => {
                 <div className="col-md-4 mb-3">
                     <label>Gender</label>
                     <br />
-                    <input type="text" style={{ padding: '0' }} {...register("gender", { required: true })} />
+                    <input type="text" defaultValue={user?.gender} style={{ padding: '0' }} {...register("gender", { required: true })} />
                     <br />
                     {errors.gender && <span className='text-danger fw-bold'>Enter Gender</span>}
                     <br />
@@ -86,9 +121,18 @@ const StudentInfo = () => {
                 <div className="col-md-4 mb-3">
                     <label>Marital Status</label>
                     <br />
-                    <input type="text" style={{ padding: '0' }} {...register("maritalStatus", { required: true })} />
+                    <input type="text" defaultValue={user?.maritalStatus} style={{ padding: '0' }} {...register("maritalStatus", { required: true })} />
                     <br />
                     {errors.maritalStatus && <span className='text-danger fw-bold'>Enter Status</span>}
+                    <br />
+                </div>
+
+                <div className="col-md-4 mb-3">
+                    <label>Image Url</label>
+                    <br />
+                    <input type="text" defaultValue={user?.image} style={{ padding: '0' }} {...register("image", { required: true })} />
+                    <br />
+                    {errors.image && <span className='text-danger fw-bold'>Enter Url</span>}
                     <br />
                 </div>
 

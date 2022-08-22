@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CourseDetails from './CourseDetails';
 import FundingDetails from './FundingDetails';
 import InstituteDetails from './InstituteDetails';
 
 const InstituteMain = () => {
+
+    const id = localStorage.getItem('token')
+    const [user,setUser] = useState({})
+
+    useEffect(()=>{
+        fetch(`http://localhost:8000/institutes/${id}`)
+        .then(response => response.json())
+        .then(data => setUser(data))
+    })
+
     return (
         <section style={{ backgroundColor: '#efefef', minHeight: '100vh' }}>
             <div style={{ height: '8vh', borderBottom: '1px solid #e5e5e5' }} className="bg-white">
@@ -13,10 +23,14 @@ const InstituteMain = () => {
                     </div>
                     <div className="d-flex pe-5 justify-content-center align-items-center">
                         <div className="">
-                            <img width={40} className='img-fluid mb-3' src="https://miro.medium.com/max/3150/1*KS8-MJMTa6eq3zlL5l9Hjg.png" alt="user" />
+                        {
+                                user?.image ? 
+                                <img style={{borderRadius: '50%'}} width={40} className='img-fluid' src={user?.image} alt="user" /> :
+                                <div style={{height:'40px', width:'40px', borderRadius: '50%', backgroundColor:'lightgrey'}} className=""></div>
+                            }
                         </div>
                         <div className="ms-3">
-                            <h3 className='fs-5 fw-bold'>Name</h3>
+                            <h3 className='fs-5 fw-bold'>{user?.firsName} {user?.lastName} {user?.name}</h3>
                             <h4 className='fs-6'>Institute</h4>
                         </div>
                     </div>

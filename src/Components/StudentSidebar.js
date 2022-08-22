@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logOutImage from '../images/Dashboard/logout.png';
 import accountDetailsImage from '../images/Dashboard/accountDetails.png';
 import applicationsImage from '../images/Dashboard/applications.png';
@@ -8,12 +8,18 @@ import messagesImage from '../images/Dashboard/messages.png';
 import paymentsImage from '../images/Dashboard/payments.png';
 
 const StudentSidebar = () => {
+
+    const logOut = () => {
+        localStorage.clear();
+        window.location.reload();
+    }
+
     return (
         <section style={{ minHeight: '100vh', borderRight: '1px solid #eaeaea' }}>
-            <img className='img-fluid mx-auto d-block p-3' src="https://i.ibb.co/LNMdQZp/logo.png" alt="logo" />
+            <Link to='/'><img className='img-fluid mx-auto d-block p-3' src="https://i.ibb.co/LNMdQZp/logo.png" alt="logo" /></Link>
 
             <div className="mt-5">
-                <div style={{backgroundColor:'#FFAC29'}} className="p-3 fw-bold">
+                <div style={{ backgroundColor: '#FFAC29' }} className="p-3 fw-bold">
                     <NavLink to='/dashboard/student' className='text-decoration-none text-black ps-5'><img src={accountDetailsImage} alt="" /> Account Details</NavLink>
                 </div>
 
@@ -34,9 +40,10 @@ const StudentSidebar = () => {
                 </div>
             </div>
 
-            <div 
-            style={{ position: 'absolute', bottom: '0', left:'50px' }} 
-            className='p-3 mb-5'>
+            <div
+                onClick={() => logOut()}
+                style={{ position: 'absolute', bottom: '0', left: '50px' }}
+                className='p-3 mb-5'>
                 <button className='btn mx-auto d-block'><img className='mx-auto d-block' src={logOutImage} alt="" /></button>
             </div>
 

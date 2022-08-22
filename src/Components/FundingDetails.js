@@ -1,10 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
 
 const FundingDetails = () => {
 
+    const id = localStorage.getItem('token')
+    const [user, setUser] = useState({})
+
+    useEffect(()=>{
+        fetch(`http://localhost:8000/institutes/${id}`)
+        .then(response => response.json())
+        .then(data => setUser(data))
+    },[id])
+
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => updateInfo(data);
+
+    const updateInfo = details => {
+        fetch(`http://localhost:8000/institute/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(details)
+        })
+            .then(res => res.json())
+            .then(data =>
+                data.status === true ?
+                    Swal.fire({
+                        icon: 'success',
+                        title: "Updated!!",
+                        text: `${data.message}`,
+                    })
+                    :
+                    Swal.fire({
+                        icon: 'error',
+                        title: "Something Went Wrong!",
+                        text: `${data.message}`,
+                    })
+            )
+    }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -25,7 +58,7 @@ const FundingDetails = () => {
                 <div className="col-md-4 mb-3">
                     <label>Name</label>
                     <br />
-                    <input type="text" style={{ padding: '0' }} {...register("fundingName", { required: true })} />
+                    <input type="text" value={user?.fundingName} style={{ padding: '0' }} {...register("fundingName", { required: true })} />
                     <br />
                     {errors.fundingName && <span className='text-danger fw-bold'>Enter Name</span>}
                 </div>
@@ -33,7 +66,7 @@ const FundingDetails = () => {
                 <div className="col-md-4 mb-3">
                     <label>Description</label>
                     <br />
-                    <textarea rows='1' cols='40' type="text" style={{ padding: '0' }} {...register("fundingDescription", { required: true })} />
+                    <textarea rows='1' cols='34' type="text" value={user?.fundingDescription} style={{ padding: '0' }} {...register("fundingDescription", { required: true })} />
                     <br />
                     {errors.fundingDescription && <span className='text-danger fw-bold'>Enter Description</span>}
                     <br />
@@ -42,7 +75,7 @@ const FundingDetails = () => {
                 <div className="col-md-4 mb-3">
                     <label>Amount</label>
                     <br />
-                    <input type="text" style={{ padding: '0' }} {...register("fundingAmount", { required: true })} />
+                    <input type="text" value={user?.fundingAmount} style={{ padding: '0' }} {...register("fundingAmount", { required: true })} />
                     <br />
                     {errors.fundingAmount && <span className='text-danger fw-bold'>Enter Amount</span>}
                     <br />
@@ -51,7 +84,7 @@ const FundingDetails = () => {
                 <div className="col-md-4 mb-3">
                     <label>Other Details</label>
                     <br />
-                    <textarea rows='1' cols='40' type="text" style={{ padding: '0' }} {...register("otherDetails", { required: true })} />
+                    <textarea rows='1' cols='40' type="text" value={user?.otherDetails} style={{ padding: '0' }} {...register("otherDetails", { required: true })} />
                     <br />
                     {errors.otherDetails && <span className='text-danger fw-bold'>Enter Details</span>}
                     <br />

@@ -1,10 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
 
 const PartnerServices = () => {
 
+    const id = localStorage.getItem('token')
+    const [user, setUser] = useState({})
+
+    useEffect(()=>{
+        fetch(`http://localhost:8000/partners/${id}`)
+        .then(response => response.json())
+        .then(data => setUser(data))
+    },[id])
+
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => updateInfo(data);
+
+    const updateInfo = details => {
+        fetch(`http://localhost:8000/partner/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(details)
+        })
+            .then(res => res.json())
+            .then(data =>
+                data.status === true ?
+                    Swal.fire({
+                        icon: 'success',
+                        title: "Updated!!",
+                        text: `${data.message}`,
+                    })
+                    :
+                    Swal.fire({
+                        icon: 'error',
+                        title: "Something Went Wrong!",
+                        text: `${data.message}`,
+                    })
+            )
+    }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -19,6 +52,8 @@ const PartnerServices = () => {
 
             <div id='default-focused' className='default-focused col-sm-2'></div>
             <div className='focused'></div>
+
+            <p className="text-muted my-5">{user?.checkbox}</p>
 
             <div className="row mt-5">
                 <div className="col-md-4 mb-3">

@@ -1,10 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
 
 const StudentExamScore = () => {
 
+    const id = localStorage.getItem('token')
+    const [user, setUser] = useState({})
+
+    useEffect(()=>{
+        fetch(`http://localhost:8000/students/${id}`)
+        .then(response => response.json())
+        .then(data => setUser(data))
+    },[id])
+
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => updateInfo(data);
+
+    const updateInfo = details => {
+        console.log(details)
+        fetch(`http://localhost:8000/student/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(details)
+        })
+            .then(res => res.json())
+            .then(data =>
+                data.status === true ?
+                    Swal.fire({
+                        icon: 'success',
+                        title: "Updated!!",
+                        text: `${data.message}`,
+                    })
+                    :
+                    Swal.fire({
+                        icon: 'error',
+                        title: "Something Went Wrong!",
+                        text: `${data.message}`,
+                    })
+            )
+    }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -24,7 +59,7 @@ const StudentExamScore = () => {
                 <div className="col-md-4 mb-3">
                     <label>English Exam Type</label>
                     <br />
-                    <input type="text" style={{ padding: '0' }} {...register("examType", { required: true })} />
+                    <input type="text" value={user?.examType} style={{ padding: '0' }} {...register("examType", { required: true })} />
                     <br />
                     {errors.examType && <span className='text-danger fw-bold'>Enter Exam Type</span>}
                     <br />
@@ -33,7 +68,7 @@ const StudentExamScore = () => {
                 <div className="col-md-4 mb-3">
                     <label>Date of Exam</label>
                     <br />
-                    <input type="text" style={{ padding: '0' }} {...register("examDate", { required: true })} />
+                    <input type="text" value={user?.examDate} style={{ padding: '0' }} {...register("examDate", { required: true })} />
                     <br />
                     {errors.examDate && <span className='text-danger fw-bold'>Enter Date</span>}
                     <br />
@@ -42,7 +77,7 @@ const StudentExamScore = () => {
                 <div className="col-md-4 mb-3">
                     <label>Band Score</label>
                     <br />
-                    <input type="number" style={{ padding: '0' }} {...register("bandScore", { required: true })} />
+                    <input type="number" step='any' value={user?.bandScore} style={{ padding: '0' }} {...register("bandScore", { required: true })} />
                     <br />
                     {errors.bandScore && <span className='text-danger fw-bold'>Enter Band Score</span>}
                     <br />
@@ -51,7 +86,7 @@ const StudentExamScore = () => {
                 <div className="col-md-4 mb-3">
                     <label>Reading Score</label>
                     <br />
-                    <input type="number" style={{ padding: '0' }} {...register("readingScore", { required: true })} />
+                    <input type="number" step='any' value={user?.readingScore} style={{ padding: '0' }} {...register("readingScore", { required: true })} />
                     <br />
                     {errors.readingScore && <span className='text-danger fw-bold'>Enter Reading Score</span>}
                     <br />
@@ -60,7 +95,7 @@ const StudentExamScore = () => {
                 <div className="col-md-4 mb-3">
                     <label>Listening Score</label>
                     <br />
-                    <input type="number" style={{ padding: '0' }} {...register("listeningScore", { required: true })} />
+                    <input type="number" step='any' value={user?.listeningScore} style={{ padding: '0' }} {...register("listeningScore", { required: true })} />
                     <br />
                     {errors.listeningScore && <span className='text-danger fw-bold'>Enter Listening Score</span>}
                     <br />
@@ -69,7 +104,7 @@ const StudentExamScore = () => {
                 <div className="col-md-4 mb-3">
                     <label>Speaking Score</label>
                     <br />
-                    <input type="number" style={{ padding: '0' }} {...register("speakingScore", { required: true })} />
+                    <input type="number" step='any' value={user?.speakingScore} style={{ padding: '0' }} {...register("speakingScore", { required: true })} />
                     <br />
                     {errors.speakingScore && <span className='text-danger fw-bold'>Enter Speaking Score</span>}
                     <br />
@@ -78,7 +113,7 @@ const StudentExamScore = () => {
                 <div className="col-md-4 mb-3">
                     <label>Writing Score</label>
                     <br />
-                    <input type="number" style={{ padding: '0' }} {...register("writingScore", { required: true })} />
+                    <input type="number" step='any' value={user?.writingScore} style={{ padding: '0' }} {...register("writingScore", { required: true })} />
                     <br />
                     {errors.writingScore && <span className='text-danger fw-bold'>Enter Writing Score</span>}
                     <br />
