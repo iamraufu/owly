@@ -10,7 +10,7 @@ const StudentMain = () => {
     const [user,setUser] = useState({})
 
     useEffect(()=>{
-        fetch(`http://localhost:8000/students/${id}`)
+        fetch(`https://owlybd.herokuapp.com/students/${id}`)
         .then(response => response.json())
         .then(data => setUser(data))
     })

@@ -8,7 +8,7 @@ const FundingDetails = () => {
     const [user, setUser] = useState({})
 
     useEffect(()=>{
-        fetch(`http://localhost:8000/institutes/${id}`)
+        fetch(`https://owlybd.herokuapp.com/institutes/${id}`)
         .then(response => response.json())
         .then(data => setUser(data))
     },[id])
@@ -17,7 +17,7 @@ const FundingDetails = () => {
     const onSubmit = data => updateInfo(data);
 
     const updateInfo = details => {
-        fetch(`http://localhost:8000/institute/${id}`, {
+        fetch(`https://owlybd.herokuapp.com/institute/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(details)

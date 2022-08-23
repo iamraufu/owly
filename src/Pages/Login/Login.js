@@ -21,7 +21,7 @@ const Login = () => {
     const onSubmit = data => login(data);
 
     const login = details => {
-        fetch('http://localhost:8000/login', {
+        fetch('https://owlybd.herokuapp.com/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(details)

@@ -8,7 +8,7 @@ const PartnerServices = () => {
     const [user, setUser] = useState({})
 
     useEffect(()=>{
-        fetch(`http://localhost:8000/partners/${id}`)
+        fetch(`https://owlybd.herokuapp.com/partners/${id}`)
         .then(response => response.json())
         .then(data => setUser(data))
     },[id])
@@ -17,7 +17,7 @@ const PartnerServices = () => {
     const onSubmit = data => updateInfo(data);
 
     const updateInfo = details => {
-        fetch(`http://localhost:8000/partner/${id}`, {
+        fetch(`https://owlybd.herokuapp.com/partner/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(details)
@@ -63,17 +63,17 @@ const PartnerServices = () => {
 
                 <div className="col-md-4 mb-3">
                     <input id='passport_assistance' {...register("checkbox")} type="checkbox" value="Passport Assistance" />
-                    <label htmlFor='passport_assistance' className='ps-2 fw-bold'>Passport Assistance</label>
+                    <label htmlFor='passport_assistance' className='ps-2 fw-bold'> Passport Assistance </label>
                 </div>
 
                 <div className="col-md-4 mb-3">
                     <input id='financial_assistance' {...register("checkbox")} type="checkbox" value="Financial Assistance" />
-                    <label htmlFor='financial_assistance' className="ps-2 fw-bold">Financial Assistance</label>
+                    <label htmlFor='financial_assistance' className="ps-2 fw-bold"> Financial Assistance </label>
                 </div>
 
                 <div className="col-md-4 mb-3">
                     <input id='travel_assistance' {...register("checkbox")} type="checkbox" value="Travel Assistance" />
-                    <label htmlFor='travel_assistance' className='ps-2 fw-bold'>Travel Assistance</label>
+                    <label htmlFor='travel_assistance' className='ps-2 fw-bold'> Travel Assistance </label>
                 </div>
 
                 <div className="col-md-4 mb-3">
@@ -83,17 +83,17 @@ const PartnerServices = () => {
 
                 <div className="col-md-4 mb-3">
                     <input id='ielts_coaching' {...register("checkbox")} type="checkbox" value="IELTS Coaching" />
-                    <label htmlFor='ielts_coaching' className='ps-2 fw-bold'>IELTS Coaching</label>
+                    <label htmlFor='ielts_coaching' className='ps-2 fw-bold'> IELTS Coaching </label>
                 </div>
 
                 <div className="col-md-4 mb-3">
                     <input id='sattoefl_coaching' {...register("checkbox")} type="checkbox" value="SAT / TOEFL Coaching" />
-                    <label htmlFor='sattoefl_coaching' className='ps-2 fw-bold'>SAT / TOEFL Coaching</label>
+                    <label htmlFor='sattoefl_coaching' className='ps-2 fw-bold'> SAT / TOEFL Coaching </label>
                 </div>
 
                 <div className="col-md-4 mb-3">
                     <input id='gregmat_coaching' {...register("checkbox")} type="checkbox" value="GRE / GMAT Coaching" />
-                    <label htmlFor='gregmat_coaching' className='ps-2 fw-bold'>GRE / GMAT Coaching</label>
+                    <label htmlFor='gregmat_coaching' className='ps-2 fw-bold'> GRE / GMAT Coaching </label>
                 </div>
             
             </div>

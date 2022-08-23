@@ -34,8 +34,8 @@ const Programs = () => {
 
                                 <div className="col-md-4 d-flex justify-content-around pt-3">
                                     <button className='programs-apply-btn fw-bold'>Apply</button>
-                                    <button onClick={()=>{
-                                        navigate('/program-details/'+item.id)
+                                    <button onClick={() => {
+                                        navigate('/program-details/' + item.id)
                                     }} className='programs-details-btn fw-bold'>Program Details</button>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@ const Programs = () => {
                                         <h3 className="fs-6">{item.fee}</h3>
                                     </div>
                                 </div>
-                                
+
                                 <div className="col-md-2 d-flex align-items-center">
                                     <div className="">
                                         <img src={dateImage} className='pe-2' alt={item.name} />

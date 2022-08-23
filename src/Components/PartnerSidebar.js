@@ -22,7 +22,7 @@ const PartnerSidebar = () => {
                 </div>
 
                 <div className="p-3">
-                    <NavLink to='/dashboard/partner' className='text-decoration-none text-black ps-5'><img src={leadsImage} alt="" /> Leads</NavLink>
+                    <NavLink to='/dashboard/leads' className='text-decoration-none text-black ps-5'><img src={leadsImage} alt="" /> Leads</NavLink>
                 </div>
 
                 <div className="p-3">

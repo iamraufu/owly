@@ -9,7 +9,7 @@ const InstituteMain = () => {
     const [user,setUser] = useState({})
 
     useEffect(()=>{
-        fetch(`http://localhost:8000/institutes/${id}`)
+        fetch(`https://owlybd.herokuapp.com/institutes/${id}`)
         .then(response => response.json())
         .then(data => setUser(data))
     })

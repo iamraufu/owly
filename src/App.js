@@ -14,6 +14,9 @@ import PartnerPanel from './Pages/PartnerPanel/PartnerPanel';
 import AuthProvider from './Context/AuthProvider';
 import PrivateOutlet from './Components/PrivateOutlet';
 import Dashboard from './Pages/Dashboard/Dashboard';
+import Partners from './Pages/Partners/Partners';
+import Institutes from './Pages/Institutes/Institutes';
+import Leads from './Pages/Leads/Leads';
 
 function App() {
   return (
@@ -22,6 +25,8 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/programs" element={<Programs />} />
+        <Route path="/institutes" element={<Institutes />} />
+        <Route path="/partners" element={<Partners />} />
         <Route path="/login" element={<Login />} />
         <Route path="/student-signup" element={<StudentSignUp />} />
         <Route path="/partner-signup" element={<PartnerSignUp />} />
@@ -33,6 +38,7 @@ function App() {
           <Route path="/dashboard/student" element={<StudentPanel />} />
           <Route path="/dashboard/institute" element={<InstitutePanel />} />
           <Route path="/dashboard/partner" element={<PartnerPanel />} />
+          <Route path="/dashboard/leads" element={<Leads />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />

@@ -8,7 +8,7 @@ const PartnerDetails = () => {
     const [user, setUser] = useState({})
 
     useEffect(()=>{
-        fetch(`http://localhost:8000/partners/${id}`)
+        fetch(`https://owlybd.herokuapp.com/partners/${id}`)
         .then(response => response.json())
         .then(data => setUser(data))
     },[id])
@@ -18,7 +18,7 @@ const PartnerDetails = () => {
 
     const updateInfo = details => {
         console.log(details)
-        fetch(`http://localhost:8000/partner/${id}`, {
+        fetch(`https://owlybd.herokuapp.com/partner/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(details)

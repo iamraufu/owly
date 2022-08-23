@@ -9,7 +9,7 @@ const StudentExamScore = () => {
     const [user, setUser] = useState({})
 
     useEffect(()=>{
-        fetch(`http://localhost:8000/students/${id}`)
+        fetch(`https://owlybd.herokuapp.com/students/${id}`)
         .then(response => response.json())
         .then(data => setUser(data))
     },[id])
@@ -19,7 +19,7 @@ const StudentExamScore = () => {
 
     const updateInfo = details => {
         console.log(details)
-        fetch(`http://localhost:8000/student/${id}`, {
+        fetch(`https://owlybd.herokuapp.com/student/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(details)

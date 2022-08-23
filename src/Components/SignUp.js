@@ -14,7 +14,7 @@ const SignUp = ({ as }) => {
     const signUp = details => {
 
         if (signUpAs === 'student') {
-            fetch('http://localhost:8000/addStudent', {
+            fetch('https://owlybd.herokuapp.com/addStudent', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(details)
@@ -38,7 +38,7 @@ const SignUp = ({ as }) => {
         }
         // sign up as partner
         else if (signUpAs === 'partner') {
-            fetch('http://localhost:8000/addPartner', {
+            fetch('https://owlybd.herokuapp.com/addPartner', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(details)
@@ -62,7 +62,7 @@ const SignUp = ({ as }) => {
         }
         // sign up as institute
         else {
-            fetch('http://localhost:8000/addInstitute', {
+            fetch('https://owlybd.herokuapp.com/addInstitute', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(details)
